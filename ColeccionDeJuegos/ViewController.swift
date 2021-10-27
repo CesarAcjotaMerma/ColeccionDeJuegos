@@ -17,6 +17,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         super.viewDidLoad()
         tableView.dataSource = self
         tableView.delegate = self
+        self.tableView.isEditing = false
+        setEditing(true, animated: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -39,6 +41,45 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.textLabel?.text = juego.titulo
         cell.imageView?.image = UIImage(data: (juego.imagen!))
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle:  UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(juegos[indexPath.row])
+            juegos.remove(at: indexPath.row)
+        } else if editingStyle == .insert {
+            //print("Style Insert")
+            }
+        self.tableView.reloadData()
+    }
+    
+//    override func setEditing(_ editing: Bool, animated: Bool) {
+//        super.setEditing(editing, animated:animated)
+//
+//        if (self.isEditing){
+//            self.editButtonItem.title = "Editar"
+//        }
+//        else{
+//            self.editButtonItem.title = "Hecho"
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+        _ = self.juegos[fromIndexPath.row]
+        juegos.remove(at: fromIndexPath.row)
+        NSLog("%@", "\(fromIndexPath.row) = \(to.row) \(juegos)")
+    }
+    
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let juego = juegos[indexPath.row]
+        performSegue(withIdentifier: "juegoSegue", sender: juego)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let siguienteVC = segue.destination as! JuegosViewController
+        siguienteVC.juego = sender as? Juego
     }
 
     

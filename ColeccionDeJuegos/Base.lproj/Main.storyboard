@@ -15,7 +15,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h4h-6h-S5G">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h4h-6h-S5G">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                             </tableView>
@@ -32,7 +32,7 @@
                     <navigationItem key="navigationItem" id="Y3O-ft-fFN">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Qxy-2i-hZa">
                             <connections>
-                                <segue destination="dEt-37-BTW" kind="show" id="MrP-R0-LdO"/>
+                                <segue destination="dEt-37-BTW" kind="show" identifier="juegoSegue" id="MrP-R0-LdO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -53,19 +53,39 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="i88-He-Zm1">
-                                <rect key="frame" x="70" y="120" width="274" height="150"/>
+                                <rect key="frame" x="50" y="120" width="314" height="200"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="150" id="kLL-i8-B8n"/>
+                                    <constraint firstAttribute="height" constant="200" id="kLL-i8-B8n"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ingrese Titulo" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="J37-Ie-T9A">
-                                <rect key="frame" x="70" y="290" width="274" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <rect key="frame" x="50" y="340" width="314" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="ZOQ-z3-s34"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="20"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CYw-F4-ecV">
+                                <rect key="frame" x="50" y="470" width="314" height="216"/>
+                            </pickerView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Categoria:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cWa-Wc-Rnf">
+                                <rect key="frame" x="50" y="420" width="314" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IbR-pO-Usc">
-                                <rect key="frame" x="70" y="344" width="274" height="30"/>
-                                <state key="normal" title="Agregar"/>
+                                <rect key="frame" x="50" y="706" width="314" height="70"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="70" id="ryC-2e-j00"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <state key="normal" title="Agregar">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <connections>
                                     <action selector="agregarTapped:" destination="dEt-37-BTW" eventType="touchUpInside" id="XFh-0K-MuT"/>
                                 </connections>
@@ -73,18 +93,24 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="IbR-pO-Usc" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="70" id="1ix-CR-mo1"/>
-                            <constraint firstItem="J37-Ie-T9A" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="70" id="BkA-47-BCT"/>
+                            <constraint firstItem="IbR-pO-Usc" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="50" id="1ix-CR-mo1"/>
+                            <constraint firstItem="IbR-pO-Usc" firstAttribute="top" secondItem="CYw-F4-ecV" secondAttribute="bottom" constant="20" id="8ky-hg-1DG"/>
+                            <constraint firstItem="J37-Ie-T9A" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="50" id="BkA-47-BCT"/>
+                            <constraint firstItem="cWa-Wc-Rnf" firstAttribute="top" secondItem="J37-Ie-T9A" secondAttribute="bottom" constant="20" id="EIl-sw-E8g"/>
+                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="CYw-F4-ecV" secondAttribute="trailing" constant="50" id="INP-tO-8m9"/>
                             <constraint firstItem="i88-He-Zm1" firstAttribute="centerX" secondItem="O6v-5f-bIH" secondAttribute="centerX" id="K0W-df-FZD"/>
-                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="J37-Ie-T9A" secondAttribute="trailing" constant="70" id="MZH-4k-u19"/>
-                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="IbR-pO-Usc" secondAttribute="trailing" constant="70" id="Rc5-sq-wYb"/>
+                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="J37-Ie-T9A" secondAttribute="trailing" constant="50" id="MZH-4k-u19"/>
+                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="IbR-pO-Usc" secondAttribute="trailing" constant="50" id="Rc5-sq-wYb"/>
+                            <constraint firstItem="CYw-F4-ecV" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="50" id="SSF-sM-HYP"/>
                             <constraint firstItem="IbR-pO-Usc" firstAttribute="centerX" secondItem="O6v-5f-bIH" secondAttribute="centerX" id="U2D-wX-VaD"/>
-                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="i88-He-Zm1" secondAttribute="trailing" constant="70" id="aCq-wZ-Yjw"/>
+                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="i88-He-Zm1" secondAttribute="trailing" constant="50" id="aCq-wZ-Yjw"/>
                             <constraint firstItem="J37-Ie-T9A" firstAttribute="centerX" secondItem="O6v-5f-bIH" secondAttribute="centerX" id="an7-ia-J37"/>
-                            <constraint firstItem="IbR-pO-Usc" firstAttribute="top" secondItem="J37-Ie-T9A" secondAttribute="bottom" constant="20" id="jKF-gy-hnX"/>
+                            <constraint firstItem="7eX-tq-sE6" firstAttribute="trailing" secondItem="cWa-Wc-Rnf" secondAttribute="trailing" constant="50" id="fjF-ws-nTa"/>
+                            <constraint firstItem="cWa-Wc-Rnf" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="50" id="lW8-Ib-hp3"/>
                             <constraint firstItem="i88-He-Zm1" firstAttribute="top" secondItem="7eX-tq-sE6" secondAttribute="top" constant="32" id="oWb-nd-bdp"/>
                             <constraint firstItem="J37-Ie-T9A" firstAttribute="top" secondItem="i88-He-Zm1" secondAttribute="bottom" constant="20" id="sRP-pv-z6g"/>
-                            <constraint firstItem="i88-He-Zm1" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="70" id="skR-ZS-0Xu"/>
+                            <constraint firstItem="CYw-F4-ecV" firstAttribute="top" secondItem="cWa-Wc-Rnf" secondAttribute="bottom" constant="20" id="sfS-MK-gmM"/>
+                            <constraint firstItem="i88-He-Zm1" firstAttribute="leading" secondItem="7eX-tq-sE6" secondAttribute="leading" constant="50" id="skR-ZS-0Xu"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7eX-tq-sE6"/>
                     </view>
@@ -104,6 +130,8 @@
                     </navigationItem>
                     <connections>
                         <outlet property="JuegoImageView" destination="i88-He-Zm1" id="G0z-ey-COf"/>
+                        <outlet property="agregarActualizacionBoton" destination="IbR-pO-Usc" id="FK7-E6-nyx"/>
+                        <outlet property="pickerView" destination="CYw-F4-ecV" id="j49-gq-JYu"/>
                         <outlet property="tituloTextField" destination="J37-Ie-T9A" id="YQN-zM-qMa"/>
                     </connections>
                 </viewController>
